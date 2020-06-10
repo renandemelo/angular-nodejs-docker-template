@@ -1,0 +1,31 @@
+FROM node:12.4.0-alpine
+
+RUN mkdir -p /usr/client-side
+RUN mkdir -p /usr/server-side
+
+WORKDIR /usr/client-side
+COPY client-side/package.json .
+RUN npm install
+
+WORKDIR /usr/server-side
+COPY ./server-side/package.json .
+RUN npm install
+
+WORKDIR /usr/client-side
+COPY client-side/src ./src
+COPY client-side/angular.json .
+COPY client-side/tsconfig.json .
+RUN npm run-script build-prod
+
+WORKDIR /usr/server-side
+COPY server-side /usr/server-side
+RUN mv /usr/client-side/dist /usr/server-side/pages
+
+## Getting the wait script
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
+
+# Exports
+EXPOSE 3000
+EXPOSE 9229
+CMD /wait && npm run start

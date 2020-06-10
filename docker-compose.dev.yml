@@ -1,0 +1,49 @@
+version: '3.3'
+services:
+  dbserver:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=skdfksjkf
+      - MYSQL_DATABASE=offerings_db
+      - MYSQL_USER=devuser
+      - MYSQL_PASSWORD=devpass
+    ports:
+      - "9955:3306"
+    volumes:
+        - "~/volumes/mysql:/var/lib/mysql"
+  web:
+    build:
+      context: server-side
+      dockerfile: Dockerfile.dev
+    environment:
+      - ENVIRONMENT=DEVELOPMENT
+      - ADMIN_PASSWORD=somepass
+      - COLLECTION_PASSWORD=somepass2
+      - SMTP_SERVER=smtp.office365.com
+      - SMTP_PORT=587
+      - SMTP_SENDER=system@sender.de
+      - SMTP_RECIPIENTS=sender@gmail.com
+      - SMTP_PASSWORD=asdfasdfsd
+      - WAIT_HOSTS=dbserver:3306,client-side:4200
+      - WAIT_HOSTS_TIMEOUT=180
+      - WAIT_AFTER_HOSTS=10
+    depends_on:
+      - dbserver
+      - client-side
+    volumes:
+      - ./server-side:/usr/server-side/code
+    ports:
+     - "8100:3000"
+     - "9229:9229"
+    stdin_open: true
+    tty: true
+
+  client-side:
+    build:
+      context: client-side
+    volumes:
+      - ./client-side/src:/usr/client-side/src
+    ports:
+      - "8101:4200"
+    stdin_open: true
+    tty: true

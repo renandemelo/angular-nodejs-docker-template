@@ -1,0 +1,17 @@
+
+@import '../../app_variables';
+
+.main-container{
+    display: flex; 
+    justify-content: center;
+}
+.login-container{
+    max-width: 800px;
+}
+
+.input__form--fullwidth{
+    width: 100%;
+}
+.error-message{
+    color: mat-color(map-get($app-current-theme, warn));
+}

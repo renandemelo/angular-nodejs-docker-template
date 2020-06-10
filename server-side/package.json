@@ -1,0 +1,29 @@
+{
+  "name": "login_with_sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "code/server.js",
+  "scripts": {
+    "start": "node server",
+    "start.dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "dateformat": "3.0.3",
+    "express": "4.16.4",
+    "express-csv": "0.6.0",
+    "express-http-proxy": "1.5.1",
+    "express-session": "1.16.1",
+    "mysql2": "1.6.4",
+    "nodemailer": "6.3.0",
+    "pug": "2.0.3",
+    "request": "2.88.0",
+    "request-promise": "4.2.2",
+    "sequelize": "4.41.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
+}

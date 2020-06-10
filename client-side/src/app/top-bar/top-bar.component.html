@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <div mat-button [routerLink]="['/']" class="top-bar-back-to-home">
+    <img src="/pages/assets/img/logo-micc.png" class="logo"/>
+    Offering
+  </div>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+
+  <button mat-flat-button [routerLink]="['/backoffice']">
+    <mat-icon>business</mat-icon>
+    Backoffice
+  </button>
+</mat-toolbar>

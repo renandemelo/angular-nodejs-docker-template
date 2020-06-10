@@ -1,0 +1,21 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+        Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.top-bar-action {
+    padding: 0 14px;
+}
+
+.top-bar-back-to-home{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    width: 24px; 
+    height: 24px; 
+    margin-right: 12px;
+}

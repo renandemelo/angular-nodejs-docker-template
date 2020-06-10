@@ -1,0 +1,21 @@
+FROM node:12.4.0-alpine
+
+# Create app directory
+RUN mkdir -p /usr/server-side
+WORKDIR /usr/server-side
+
+# Install dependencies
+COPY package.json .
+RUN npm install
+
+# Bundle app source
+COPY . ./code
+
+## Getting the wait script
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
+
+# Exports
+EXPOSE 3000
+EXPOSE 9229
+CMD /wait && npm run start.dev

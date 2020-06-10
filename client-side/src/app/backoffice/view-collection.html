@@ -1,0 +1,30 @@
+<div *ngIf="collection">
+  <h2>Offering #{{collection.id}}</h2>
+  <ul>
+    <li>Date: {{collection.getFormattedDate()}}</li>
+    <li>Collector 1: {{collection.collector1}}</li>
+    <li>Collector 2: {{collection.collector2}}</li>
+    <li>Additional details: {{collection.additionalDetails}}</li>
+    <li>Attendant count: {{collection.attendantCount}}</li>
+    <li>Givings:
+        <ul>
+          <li *ngFor="let giving of collection.givings">
+            {{ giving.person || 'Anonymous' }} - {{giving.cause}}: &euro; {{ giving.amount}}
+          </li>
+        </ul>
+    </li>
+    <li>Total per Euro cause:
+      <ul>
+        <li *ngFor="let total of collection.totalsPerEuroCause">
+          {{ total.cause }} 
+          - Bills: &euro; {{total.bills.toFixed(2)}};
+          Coins: &euro; {{total.coins.toFixed(2)}} 
+        </li>
+      </ul>
+  </li>
+  </ul>
+  <div class="actions">
+    <a mat-stroked-button [routerLink]="['/backoffice']">Back</a>
+    <button mat-raised-button color="primary" (click)="doPrint()">Print</button>
+  </div>
+</div>

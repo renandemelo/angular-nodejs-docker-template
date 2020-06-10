@@ -1,0 +1,39 @@
+.mat-cell .mat-footer-cell {
+    padding-right: 12px;
+    padding-left: 6px;
+}
+.mat-footer-cell{
+    font-weight: bold;
+}
+.givings {
+    margin-bottom: 24px;
+}
+.addGivingButton{
+    margin-top: 8px;
+}
+.mat-form-field {
+    margin-right: 10px;
+}
+.instruction {
+    margin-top: 4px;
+}
+.instruction-details {
+    margin-left: 10px;
+}
+.instructions-title a{
+    color: inherit;
+    text-decoration: inherit;
+}
+.icon-afterText{
+    margin-left: 10px;
+}
+.addGivingFieldsContainer .finalDetailsFieldsContainer{
+    display: flex; 
+    flex-flow: row wrap;
+}
+.givingsTable {
+    width: 100%;
+}
+.collectionDetailsDiv{
+    padding-top: 4px;
+}

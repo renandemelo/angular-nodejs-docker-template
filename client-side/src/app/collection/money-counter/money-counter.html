@@ -1,0 +1,30 @@
+<div>
+<h4>
+    Bills
+</h4>
+<div>
+    <mat-form-field *ngFor="let billInputData of billsInputMap" class="mdc-layout-grid__cell--span-2 moneyInputCell">
+        <mat-label>{{billInputData.description}}</mat-label>
+        <mat-select (selectionChange)="onAmountChange(billInputData, $event)" [value]="billInputData.amount">
+            <mat-option *ngFor="let val of possibleValues" [value]="val">
+                {{val}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="mat-subheading-2">Total bills: &euro; {{this.totalBills.toFixed(2)}}</div>
+<h4>
+    Coins
+</h4>
+<div>
+    <mat-form-field *ngFor="let coinInputData of coinsInputMap" class="mdc-layout-grid__cell--span-2 moneyInputCell">
+        <mat-label>{{coinInputData.description}}</mat-label>
+        <mat-select (selectionChange)="onAmountChange(coinInputData, $event)" [value]="coinInputData.amount">
+            <mat-option *ngFor="let val of possibleValues" [value]="val">
+                {{val}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="mat-subheading-2">Total coins: &euro; {{this.totalCoins.toFixed(2)}}</div>
+</div>

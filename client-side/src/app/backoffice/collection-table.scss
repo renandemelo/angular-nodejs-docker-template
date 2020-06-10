@@ -1,0 +1,9 @@
+@import '../../app_variables';
+
+.collection-table{
+    width: 100%;
+}
+.clickable-row:hover{
+    background-color: mat-color(map-get($app-current-theme, accent));
+    cursor: pointer;
+}
